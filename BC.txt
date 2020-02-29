@@ -1,0 +1,56 @@
+          EGR = "Engineering",    //science = yes && designing = yes,
+
+          SCI = "Science",        //science = yes && experiment = yes,
+
+          MED = "Medical",        //science = yes && experiment = no,
+
+          HTC = "Health Care",    //science = yes && nursing = yes,
+
+          BUS = "Business",       //art = yes && communicate = yes && decisionMaking = yes,
+
+          COM = "Communication",  //art = yes && communicate = yes && decisionMaking = no,
+
+          LBA = "Liberal Arts",   //art = yes && reading = yes, writing = yes,
+
+          APA = "Applied Arts",   //art = yes && reading = yes, writing = no,
+
+          FNA = "Fine Arts",      //art = yes && reading = no, crafting = yes,
+
+          EDU = "Education",      //art = yes && grading = yes,
+
+          UND = "Undecided";      //profession cannot be decided
+
+Rule#   Rule
+
+        science
+***************************************************************
+10      if science = yes && designing = yes;
+        then profession = EGR;
+
+20      if science = yes && experiment = yes;
+        then profession = SCI;
+
+30      if science = yes && experiment = no;
+        then profession = MED;
+
+40      if science = yes && nursing = yes;
+        then profession = HTC;
+
+***************************************************************
+50      if science = no && art = yes && communicate = yes && decisionMaking = yes;
+        then profession = BUS;
+
+60      if science = no && art = yes && communicate = yes && decisionMaking = no;
+        then profession = COM;
+
+70      if science = no && art = yes && reading = yes, writing = yes;
+        then profession = LBA;
+
+80      if science = no && art = yes && reading = yes, writing = no;
+        then profession = APA;
+
+90      if science = no && art = yes && reading = no, crafting = yes;
+        then profession = FNA;
+
+100     if science = no && art = yes && grading = yes;
+        then profession = EDU;

@@ -34,36 +34,17 @@ using namespace std;
 
 
 
-
+string bwChain();
+string fwChain(string);
 void display(map<int, string>);
 int main() {
-    int rules = 0;
-    int userinput;
-    vector<string> Majors = {"Engineering", "Science", "Business", "Medical", "English", "Geography", "Psychology",
-                             "Agriculture", "Health Care", "Education"};
+
+    string Profession = bwChain();
+    cout << "A good profession for you is: " << Profession << endl;
+//    string x = fwChain(Profession);
+//    cout << x;
 
 
-    map<int, string> owo;
-    for(int x = 1;x <= Majors.size(); x++)
-    {
-        owo.insert(pair<int, string>(x, Majors[x-1]));
-    }
-    display(owo);
-    cout << "Enter Shit: " << endl;
-    cin >> userinput;
-
-    auto it = owo.find(userinput);
-    if(it != owo.end())
-    {
-        cout << "You have chosen " << it->second << " as your Profession yes?" << endl;
-        string userchoice;
-        cin >> userchoice;
-        if(userchoice == "yes")
-        {
-            cout << "Do you like this shit? (yes/no): " << endl;
-            cin >> userchoice;
-        }
-    }
 //    map<int, string> owo;
 //    owo.insert(pair<int, string>(10, "Engineering"));
 //    owo.insert(pair<int, string>(20, "Science"));
@@ -108,4 +89,201 @@ void display(map<int, string> owo)
     {
         cout << it.first << ": " << it.second << endl;
     }
+}
+
+string bwChain()
+{
+    int userinput;
+    string userchoice;
+    int Rn = 0;
+    string Engin = "Engineering";
+    string Sci = "Science";
+    string Med = "Medical";
+    string Eng = "English";
+    string Geo = "Geography";
+    string Psy = "Psychology";
+    string Agr = "Agriculture";
+    string HC = "Health Care";
+    string EDU = "Education";
+    string BUS = "Business";
+
+
+    /**
+     * WHY THE FUCK DOES THIS CRASH IT.
+     */
+//    string professions = {"Engineering", "Science"};
+//    string professions2 = {"Medical", "English"};
+//    string professions3 = {"Geography", "Psychology"};
+//    string professions4 ={"Agriculture", "Health Care"};
+
+
+    vector<string> MajorsQuesiton = {"Do you like Math?", "Do you like Chem?", "Do you like Nature?", "Are you interesting in farming?",
+                             "Are you interested in helping people?", "Are you interested in Finances?",
+                             "Are you interested in Writing?", "Are you interested in teaching?"};
+
+//    for(int z = 1; z <= Professions.size(); z++)
+//    {
+//        Rn = z *10;
+//        cout << Rn << endl;
+//    }
+
+    map<int, string> owo;
+    for(int x = 1;x <= MajorsQuesiton.size(); x++)
+    {
+        Rn = x * 10;
+        owo.insert(pair<int, string>(Rn, MajorsQuesiton[x-1]));
+    }
+
+    display(owo);
+    cout << "Do you like STEM? (Yes/No):  " << endl;
+    cin >> userchoice;
+    if(userchoice == "Yes" || userchoice == "yes")
+    {
+        auto it = owo.find(10);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return Engin;
+        }
+        else if(userchoice == "No" || userchoice == "no")
+        {
+            auto itr = owo.find(20);
+            cout << itr->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes"|| userchoice == "yes")
+            {
+                return Med;
+            }
+            else if(userchoice == "No" || userchoice == "no")
+            {
+                auto it = owo.find(30);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                {
+                    auto it = owo.find(40);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                    {
+                        return Agr;
+                    }
+                    else if (userchoice == "No" || "no")
+                        return Geo;
+                }
+                else if(userchoice =="No" || userchoice == "no")
+                    return Sci;
+            }
+        }
+    }
+    else if(userchoice == "No" || userchoice == "no")
+    {
+        auto it = owo.find(50);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            auto it = owo.find(70);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "yes" || userchoice == "Yes")
+            {
+                auto it = owo.find(80);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                {
+                    return EDU;
+                }
+                else if(userchoice == "No" || userchoice == "no")
+                    return Eng;
+            }
+            else if(userchoice == "No" || userchoice == "no")
+                return Psy;
+        }
+        else if(userchoice == " Yes" || userchoice == "yes")
+        {
+            auto it = owo.find(60);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return BUS;
+            else if(userchoice == "No" || userchoice == "no")
+                return HC;
+        }
+    }
+//        cout << "Please pick a Major you are interesting in by typing the number!" << endl;
+//        display(owo);
+//        cin >> userinput;
+
+
+//        switch(userinput)
+//        {
+//            case 10:
+//                cout << "Engineering" << endl;
+//                break;
+//            case 20:
+//                cout << "Medical" << endl;
+//                break;
+//            case 30:
+//                cout << "Science" << endl;
+//                break;
+//            default:
+//
+//                break;
+//        }
+//    }
+
+
+
+//    auto it = owo.find(userinput);
+
+//    if(it != owo.end())
+//    {
+//        cout << "You have chosen " << it->second << " as your Profession yes?" << endl;
+//        string userchoice;
+//        cin >> userchoice;
+//        if(userchoice == "yes")
+//        {
+//            cout << "Do you like this shit? (yes/no): " << endl;
+//            cin >> userchoice;
+//        }
+//    }
+}
+
+string fwChain(string Profession)
+{
+    int rn;
+    string userchoice;
+    string CE = "Civil Engineering";
+    string ME = "Mechanical Engineering";
+    vector<string> Enginerring = {"Do you like circuits?", "do you like machines?", "do you like buidlings?"};
+    vector<string> Business = {"Do you like circuits?", "do you like machines?", "do you like buidlings?"};
+    map<int, string> var;
+    for(int x = 1;x <= Enginerring.size(); x++)
+    {
+        rn = x * 10;
+        var.insert(pair<int, string>(rn, Enginerring[x-1]));
+    }
+    if(Profession == "Engineering")
+    {
+        auto it = var.find(10);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return CE;
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            auto it = var.find(20);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return ME;
+        }
+
+    }
+
 }

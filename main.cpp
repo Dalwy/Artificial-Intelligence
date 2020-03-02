@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 
 using namespace std;
@@ -42,24 +43,53 @@ int askAgain();
 int main() {
 
 
-    askAgain();
+    vector<string> Majors = {"Engineering", "Science", "Medical", "English",
+                                  "Geography", "Psychology", "Agriculture", "Health Care", "Education","Business"};
+
+    bool y = false;
+    int choice = 0;
+    string Profession;
+    string SpecificArea;
+    while(!y)
+    {
+        cout << "Please pick an option based on number." << endl;
+        cout << "1. Start Expert System" << endl;
+        cout << "2. End Program" << endl;
+        cin >> choice;
+        switch(choice) {
+            case 1:
+                Profession = bwChain();
+                if(find(Majors.begin(), Majors.end(), Profession) != Majors.end()) {
+                    cout << "A good profession for you is: " << Profession << endl;
+                    SpecificArea = fwChain(Profession);
+                    cout << "A good area for you is: " << SpecificArea;
+                    askAgain();
+                }
+                else{
+                        return 3;
+                    }
+            case 2:
+                y = true;
+            default: ;
+        }
+    }
 
 
 
 
-//    map<int, string> owo;
-//    owo.insert(pair<int, string>(10, "Engineering"));
-//    owo.insert(pair<int, string>(20, "Science"));
-//    owo.insert(pair<int, string>(30, "Business"));
-//    owo.insert(pair<int, string>(40, "Medical"));
-//    owo.insert(pair<int, string>(50, "English"));
-//    owo.insert(pair<int, string>(60, "Geography"));
-//    owo.insert(pair<int, string>(70, "Psychology"));
-//    owo.insert(pair<int, string>(80, "Agriculture"));
-//    owo.insert(pair<int, string>(90, "Health Care"));
-//    owo.insert(pair<int, string>(100, "Education"));
+//    map<int, string> Rules;
+//    Rules.insert(pair<int, string>(10, "Engineering"));
+//    Rules.insert(pair<int, string>(20, "Science"));
+//    Rules.insert(pair<int, string>(30, "Business"));
+//    Rules.insert(pair<int, string>(40, "Medical"));
+//    Rules.insert(pair<int, string>(50, "English"));
+//    Rules.insert(pair<int, string>(60, "Geography"));
+//    Rules.insert(pair<int, string>(70, "Psychology"));
+//    Rules.insert(pair<int, string>(80, "Agriculture"));
+//    Rules.insert(pair<int, string>(90, "Health Care"));
+//    Rules.insert(pair<int, string>(100, "Education"));
 //
-//    display(owo);
+//    display(Rules);
 //    char userinput;
 //
 //    cout << "Choose Major: " << endl;
@@ -84,10 +114,10 @@ int main() {
     return 0;
 }
 
-void display(const map<int, string>& owo)
+void display(const map<int, string>& Rules)
 {
 
-    for(auto & it : owo)
+    for(auto & it : Rules)
     {
         cout << it.first << ": " << it.second << endl;
     }
@@ -129,19 +159,19 @@ string bwChain()
 //        cout << Rn << endl;
 //    }
 
-    map<int, string> owo;
+    map<int, string> Rules;
     for(unsigned int x = 1;x <= MajorsQuesiton.size(); x++)
     {
         Rn = x * 10;
-        owo.insert(pair<int, string>(Rn, MajorsQuesiton[x-1]));
+        Rules.insert(pair<int, string>(Rn, MajorsQuesiton[x-1]));
     }
 
-//    display(owo);
+//    display(Rules);
     cout << "Do you like STEM? (Yes/No):  " << endl;
     cin >> userchoice;
     if(userchoice == "Yes" || userchoice == "yes")
     {
-        auto it = owo.find(10);
+        auto it = Rules.find(10);
         cout << it->second << endl;
         cin >> userchoice;
         if(userchoice == "Yes" || userchoice == "yes")
@@ -150,7 +180,7 @@ string bwChain()
         }
         else if(userchoice == "No" || userchoice == "no")
         {
-            auto itr = owo.find(20);
+            auto itr = Rules.find(20);
             cout << itr->second << endl;
             cin >> userchoice;
             if(userchoice == "Yes"|| userchoice == "yes")
@@ -159,12 +189,12 @@ string bwChain()
             }
             else if(userchoice == "No" || userchoice == "no")
             {
-                it = owo.find(30);
+                it = Rules.find(30);
                 cout << it->second << endl;
                 cin >> userchoice;
                 if(userchoice == "Yes" || userchoice == "yes")
                 {
-                    it = owo.find(40);
+                    it = Rules.find(40);
                     cout << it->second << endl;
                     cin >> userchoice;
                     if(userchoice == "Yes" || userchoice == "yes")
@@ -181,17 +211,17 @@ string bwChain()
     }
     else if(userchoice == "No" || userchoice == "no")
     {
-        auto it = owo.find(50);
+        auto it = Rules.find(50);
         cout << it->second << endl;
         cin >> userchoice;
         if(userchoice == "Yes" || userchoice == "yes")
         {
-            it = owo.find(70);
+            it = Rules.find(70);
             cout << it->second << endl;
             cin >> userchoice;
             if(userchoice == "yes" || userchoice == "Yes")
             {
-                it = owo.find(80);
+                it = Rules.find(80);
                 cout << it->second << endl;
                 cin >> userchoice;
                 if(userchoice == "Yes" || userchoice == "yes")
@@ -206,7 +236,7 @@ string bwChain()
         }
         else if(userchoice == "No" || userchoice == "no")
         {
-            it = owo.find(60);
+            it = Rules.find(60);
             cout << it->second << endl;
             cin >> userchoice;
             if(userchoice == "Yes" || userchoice == "yes")
@@ -216,7 +246,7 @@ string bwChain()
         }
     }
 //        cout << "Please pick a Major you are interesting in by typing the number!" << endl;
-//        display(owo);
+//        display(Rules);
 //        cin >> userinput;
 
 
@@ -239,9 +269,9 @@ string bwChain()
 
 
 
-//    auto it = owo.find(userinput);
+//    auto it = Rules.find(userinput);
 
-//    if(it != owo.end())
+//    if(it != Rules.end())
 //    {
 //        cout << "You have chosen " << it->second << " as your Profession yes?" << endl;
 //        string userchoice;
@@ -252,7 +282,7 @@ string bwChain()
 //            cin >> userchoice;
 //        }
 //    }
-return "Something has gone wrong in BackwardChaining how did you do this";
+    return "Invalid Input please re run the program.";
 }
 
 string fwChain(const string& Profession)
@@ -264,16 +294,16 @@ string fwChain(const string& Profession)
 //                            "Industrial Engineer"};
 
     vector <string> SpecificArea = {"Civil Engineering", "Mechanical Engineering", "Chemical Engineer", "Electrical Engineer",
-                            "Industrial Engineer",
-                            "Computer Scientist", "Physicist", "Chemist", "Biologist","Astronomer",
-                            "Financial Adviser", "Marketer", "Accountant", "Stock Broker","Adviser",
-                            "Nursing", "Dentistry", "Physical Therapy", "Surgeon","Pharmacist",
-                            "Author", "Journalist","Editor","Poet", "Historian",
-                            "High School Teacher", "Professor", "Elementary School Teacher","Special Education Teacher",
-                            "Tutor", "Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer",
-                            "Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture","Counselor",
-                            "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist",
-                            "Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
+                                    "Industrial Engineer",
+                                    "Computer Scientist", "Physicist", "Chemist", "Biologist","Astronomer",
+                                    "Financial Adviser", "Marketer", "Accountant", "Stock Broker","Adviser",
+                                    "Nursing", "Dentistry", "Physical Therapy", "Surgeon","Pharmacist",
+                                    "Author", "Journalist","Editor","Poet", "Historian",
+                                    "High School Teacher", "Professor", "Elementary School Teacher","Special Education Teacher",
+                                    "Tutor", "Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer",
+                                    "Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture","Counselor",
+                                    "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist",
+                                    "Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
 
 
 
@@ -320,7 +350,7 @@ string fwChain(const string& Profession)
     }
 
 
-    vector<string> vector = {     "Do you like construction?",
+    vector<string> RuleQuestion = {     "Do you like construction?",
                                   "Do you like physics and math?",
                                   "Do you like using chemicals?",
                                   "Do you like using technology?",
@@ -372,10 +402,10 @@ string fwChain(const string& Profession)
                                   "Do you like taking care of national parks?"};//500
 
     map<int, string> var;
-    for(unsigned int x = 1; x <= vector.size(); x++)
+    for(unsigned int x = 1; x <= RuleQuestion.size(); x++)
     {
         rn = x * 10;
-        var.insert(pair<int, string>(rn, vector[x-1]));
+        var.insert(pair<int, string>(rn, RuleQuestion[x-1]));
     }
 //    display(var);
     if(Profession == "Engineering")
@@ -838,39 +868,17 @@ string fwChain(const string& Profession)
             }
         }
     }
-    return "Something has gone horribly wrong WHAT DID YOU DO";
+    return "Invalid input please re run the program.";
 }
-int askAgain()
-{
-    bool y = false;
-    int choice = 0;
-    string Profession;
-    string SpecificArea;
+int askAgain() {
     string user;
-    while(!y)
-    {
-        cout << "Please pick an option based on number." << endl;
-        cout << "1. Start Expert System" << endl;
-        cout << "2. End Program" << endl;
-        cin >> choice;
-        switch(choice) {
-            case 1:
-                Profession = bwChain();
-                cout << "A good profession for you is: " << Profession << endl;
-                SpecificArea = fwChain(Profession);
-                cout << "A good area for you is: " << SpecificArea;
-                cout << "\n\nWould you like to go again?(yes/no)" << endl;
-                cin >> user;
-                if(user == "yes")
-                    askAgain();
-                else if(user == "no")
-                    return 3;
-                else
-                    return 4;
-            case 2:
-                y = true;
-            default: ;
-        }
-    }
-    return 5;
+    cout << "\n\nWould you like to go again?(yes/no)" << endl;
+    cin >> user;
+    if (user == "yes")
+        main();
+    else if (user == "no")
+        return 3;
+    else
+        return 4;
+    return 2;
 }

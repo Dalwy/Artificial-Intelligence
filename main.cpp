@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-
-
 using namespace std;
 
 
@@ -40,11 +38,12 @@ string bwChain();
 string fwChain(const string&);
 void display(const map<int, string>&);
 int askAgain();
-int main() {
+int main()
+{
 
 
     vector<string> Majors = {"Engineering", "Science", "Medical", "English",
-                                  "Geography", "Psychology", "Agriculture", "Health Care", "Education","Business"};
+                             "Geography", "Psychology", "Agriculture", "Health Care", "Education","Business"};
 
     bool y = false;
     int choice = 0;
@@ -65,68 +64,25 @@ int main() {
                     cout << "A good area for you is: " << SpecificArea;
                     askAgain();
                 }
-                else{
-                        return 3;
-                    }
+                else
+                    return 3;
             case 2:
                 y = true;
             default: ;
         }
     }
-
-
-
-
-//    map<int, string> Rules;
-//    Rules.insert(pair<int, string>(10, "Engineering"));
-//    Rules.insert(pair<int, string>(20, "Science"));
-//    Rules.insert(pair<int, string>(30, "Business"));
-//    Rules.insert(pair<int, string>(40, "Medical"));
-//    Rules.insert(pair<int, string>(50, "English"));
-//    Rules.insert(pair<int, string>(60, "Geography"));
-//    Rules.insert(pair<int, string>(70, "Psychology"));
-//    Rules.insert(pair<int, string>(80, "Agriculture"));
-//    Rules.insert(pair<int, string>(90, "Health Care"));
-//    Rules.insert(pair<int, string>(100, "Education"));
-//
-//    display(Rules);
-//    char userinput;
-//
-//    cout << "Choose Major: " << endl;
-//    cout << "A: Business" << endl;
-//    cout << "B: Medical" << endl;
-//    cin >> userinput;
-//    if(rules = 20)
-//    {
-//        cout << it->second;
-//    }
-//    for(rules = 10; rules <= 10; rules++)
-//    {
-//        if(userinput == 'A')
-//            cout << it->first << it->second;
-//    }
-//    for(rules = 20; rules; rules++)
-//    {
-//        if(userinput == 'A')
-//            cout << it->first << it->second;
-//    }
-
     return 0;
 }
 
-void display(const map<int, string>& Rules)
-{
-
-    for(auto & it : Rules)
-    {
-        cout << it.first << ": " << it.second << endl;
-    }
-}
-
+/**
+ *
+ * @return: Expert system will return the Major it thinks is best for the student based on their answers.
+ */
 string bwChain()
 {
     string userchoice;
     unsigned int Rn = 0;
+    //These could be put into one vector but having seperate strings makes for easier readability.
     string Engin = "Engineering";
     string Sci = "Science";
     string Med = "Medical";
@@ -137,17 +93,6 @@ string bwChain()
     string HC = "Health Care";
     string EDU = "Education";
     string BUS = "Business";
-
-
-    /**
-     * WHY THE FUCK DOES THIS CRASH IT.
-     */
-//    string professions = {"Engineering", "Science"};
-//    string professions2 = {"Medical", "English"};
-//    string professions3 = {"Geography", "Psychology"};
-//    string professions4 ={"Agriculture", "Health Care"};
-
-
     vector<string> MajorsQuesiton = {"Do you like Math?", "Do you like Chem?", "Do you like Nature?",
                                      "Are you interesting in farming?",
                                      "Are you interested in helping people?", "Are you interested in Finances?",
@@ -245,11 +190,13 @@ string bwChain()
                 return HC;
         }
     }
+
+    /**
+     * Was initialy going to use switch statements to handle the condiditons
+     */
 //        cout << "Please pick a Major you are interesting in by typing the number!" << endl;
 //        display(Rules);
 //        cin >> userinput;
-
-
 //        switch(userinput)
 //        {
 //            case 10:
@@ -266,9 +213,6 @@ string bwChain()
 //                break;
 //        }
 //    }
-
-
-
 //    auto it = Rules.find(userinput);
 
 //    if(it != Rules.end())
@@ -284,14 +228,37 @@ string bwChain()
 //    }
     return "Invalid Input please re run the program.";
 }
-
-string fwChain(const string& Profession)
+/**
+ * Forward chaining will ask the user what they like in order to find a specific area in which they should go to.
+ *
+ * @param Major: Major is the parameter from which the user got from bwChain()
+ * @return: Returns with the specific area (Profession) in which the user should look into going for.
+ */
+string fwChain(const string& Major)
 {
     unsigned int rn;
     string userchoice;
 
+
+/**
+ * This comments were our initial thought as to how to split up each Area but ultimately decided to have them all in
+ * on vector.
+ */
 //    vector <string> SpecificArea= {"Civil Engineering", "Mechanical Engineering", "Chemical Engineer", "Electrical Engineer",
 //                            "Industrial Engineer"};
+//    vector <string> SAS= {"Computer Scientist", "Physicist", "Chemist", "Biologist",
+//                            "Astronomer"};
+//    vector <string> SAB= {"Financial Adviser", "Marketer", "Accountant", "Stock Broker",
+//                            "Adviser"};
+//    vector <string> SAM= {"Nursing", "Dentistry", "Physical Therapy", "Surgeon",
+//                            "Pharmacist"};
+//    vector <string> SAE= {"Author", "Journalist","Editor","Poet", "Historian"};
+//    vector <string> SAED= {"High School Teacher", "Professor", "Elementary School Teacher","Special Education Teacher","Tutor"};
+//    vector <string> SAHC= {"Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer"};
+//    vector <string> SAA= {"Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture"};
+//    vector <string> SAP= {"Counselor", "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist"};
+//    vector <string> SAG= {"Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
+
 
     vector <string> SpecificArea = {"Civil Engineering", "Mechanical Engineering", "Chemical Engineer", "Electrical Engineer",
                                     "Industrial Engineer",
@@ -306,43 +273,6 @@ string fwChain(const string& Profession)
                                     "Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    vector <string> SAS= {"Computer Scientist", "Physicist", "Chemist", "Biologist",
-//                            "Astronomer"};
-//
-//    vector <string> SAB= {"Financial Adviser", "Marketer", "Accountant", "Stock Broker",
-//                            "Adviser"};
-//
-//    vector <string> SAM= {"Nursing", "Dentistry", "Physical Therapy", "Surgeon",
-//                            "Pharmacist"};
-//
-//    vector <string> SAE= {"Author", "Journalist","Editor","Poet", "Historian"};
-//    vector <string> SAED= {"High School Teacher", "Professor", "Elementary School Teacher","Special Education Teacher","Tutor"};
-//    vector <string> SAHC= {"Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer"};
-//
-//    vector <string> SAA= {"Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture"};
-//    vector <string> SAP= {"Counselor", "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist"};
-//    vector <string> SAG= {"Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
-
     map<int, string> MAP;
     for(unsigned int x = 1; x <= SpecificArea.size(); x++)
     {
@@ -350,7 +280,7 @@ string fwChain(const string& Profession)
     }
 
 
-    vector<string> RuleQuestion = {     "Do you like construction?",
+    vector<string> RuleQuestion = {"Do you like construction?",
                                   "Do you like physics and math?",
                                   "Do you like using chemicals?",
                                   "Do you like using technology?",
@@ -408,7 +338,7 @@ string fwChain(const string& Profession)
         var.insert(pair<int, string>(rn, RuleQuestion[x-1]));
     }
 //    display(var);
-    if(Profession == "Engineering")
+    if(Major == "Engineering")
     {
 
         auto it = var.find(10);
@@ -455,7 +385,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Science")
+    else if(Major == "Science")
     {
         auto it = var.find(60);
         cout << it->second << endl;
@@ -501,7 +431,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Business")
+    else if(Major == "Business")
     {
         auto it = var.find(110);
         cout << it->second << endl;
@@ -547,7 +477,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Medical")
+    else if(Major == "Medical")
     {
         auto it = var.find(160);
         cout << it->second << endl;
@@ -593,7 +523,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "English")
+    else if(Major == "English")
     {
         auto it = var.find(210);
         cout << it->second << endl;
@@ -639,7 +569,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Education")
+    else if(Major == "Education")
     {
         auto it = var.find(260);
         cout << it->second << endl;
@@ -685,7 +615,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Health Care")
+    else if(Major == "Health Care")
     {
         auto it = var.find(310);
         cout << it->second << endl;
@@ -730,7 +660,7 @@ string fwChain(const string& Profession)
                 }
             }
         }
-    }else if(Profession == "Agriculture")
+    }else if(Major == "Agriculture")
     {
         auto it = var.find(360);
         cout << it->second << endl;
@@ -776,7 +706,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Psychology")
+    else if(Major == "Psychology")
     {
         auto it = var.find(410);
         cout << it->second << endl;
@@ -822,7 +752,7 @@ string fwChain(const string& Profession)
             }
         }
     }
-    else if(Profession == "Geography")
+    else if(Major == "Geography")
     {
         auto it = var.find(460);
         cout << it->second << endl;
@@ -870,6 +800,11 @@ string fwChain(const string& Profession)
     }
     return "Invalid input please re run the program.";
 }
+/**
+ *  Function is meant to ask the user whether they want to run through the program again
+ *  This is for another user.
+ * @return
+ */
 int askAgain() {
     string user;
     cout << "\n\nWould you like to go again?(yes/no)" << endl;
@@ -881,4 +816,21 @@ int askAgain() {
     else
         return 4;
     return 2;
+}
+/**
+ * Display will display the rules with their questions
+ * This function is not used in the program since there is no requirement for it, however if the user so pleases
+ * they may call this anytime by simply putting
+ *
+ * display(<map name>);
+ * where they would like to see it at.
+ * @param Rules
+ */
+void display(const map<int, string>& Rules)
+{
+
+    for(auto & it : Rules)
+    {
+        cout << it.first << ": " << it.second << endl;
+    }
 }

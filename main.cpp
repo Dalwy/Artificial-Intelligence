@@ -1,10 +1,8 @@
 #include <iostream>
 #include <map>
-#include <iterator>
 #include <string>
 #include <vector>
-#include <set>
-#include <sstream>
+
 
 using namespace std;
 
@@ -35,14 +33,15 @@ using namespace std;
 
 
 string bwChain();
-string fwChain(string);
-void display(map<int, string>);
+string fwChain(const string&);
+void display(const map<int, string>&);
+int askAgain();
 int main() {
 
-    string Profession = bwChain();
-    cout << "A good profession for you is: " << Profession << endl;
-//    string x = fwChain(Profession);
-//    cout << x;
+
+    askAgain();
+
+
 
 
 //    map<int, string> owo;
@@ -82,7 +81,7 @@ int main() {
     return 0;
 }
 
-void display(map<int, string> owo)
+void display(const map<int, string>& owo)
 {
 
     for(auto & it : owo)
@@ -93,9 +92,8 @@ void display(map<int, string> owo)
 
 string bwChain()
 {
-    int userinput;
     string userchoice;
-    int Rn = 0;
+    unsigned int Rn = 0;
     string Engin = "Engineering";
     string Sci = "Science";
     string Med = "Medical";
@@ -117,9 +115,10 @@ string bwChain()
 //    string professions4 ={"Agriculture", "Health Care"};
 
 
-    vector<string> MajorsQuesiton = {"Do you like Math?", "Do you like Chem?", "Do you like Nature?", "Are you interesting in farming?",
-                             "Are you interested in helping people?", "Are you interested in Finances?",
-                             "Are you interested in Writing?", "Are you interested in teaching?"};
+    vector<string> MajorsQuesiton = {"Do you like Math?", "Do you like Chem?", "Do you like Nature?",
+                                     "Are you interesting in farming?",
+                                     "Are you interested in helping people?", "Are you interested in Finances?",
+                                     "Are you interested in Writing?", "Are you interested in teaching?"};
 
 //    for(int z = 1; z <= Professions.size(); z++)
 //    {
@@ -128,13 +127,13 @@ string bwChain()
 //    }
 
     map<int, string> owo;
-    for(int x = 1;x <= MajorsQuesiton.size(); x++)
+    for(unsigned int x = 1;x <= MajorsQuesiton.size(); x++)
     {
         Rn = x * 10;
         owo.insert(pair<int, string>(Rn, MajorsQuesiton[x-1]));
     }
 
-    display(owo);
+//    display(owo);
     cout << "Do you like STEM? (Yes/No):  " << endl;
     cin >> userchoice;
     if(userchoice == "Yes" || userchoice == "yes")
@@ -157,12 +156,12 @@ string bwChain()
             }
             else if(userchoice == "No" || userchoice == "no")
             {
-                auto it = owo.find(30);
+                it = owo.find(30);
                 cout << it->second << endl;
                 cin >> userchoice;
                 if(userchoice == "Yes" || userchoice == "yes")
                 {
-                    auto it = owo.find(40);
+                    it = owo.find(40);
                     cout << it->second << endl;
                     cin >> userchoice;
                     if(userchoice == "Yes" || userchoice == "yes")
@@ -184,12 +183,12 @@ string bwChain()
         cin >> userchoice;
         if(userchoice == "Yes" || userchoice == "yes")
         {
-            auto it = owo.find(70);
+            it = owo.find(70);
             cout << it->second << endl;
             cin >> userchoice;
             if(userchoice == "yes" || userchoice == "Yes")
             {
-                auto it = owo.find(80);
+                it = owo.find(80);
                 cout << it->second << endl;
                 cin >> userchoice;
                 if(userchoice == "Yes" || userchoice == "yes")
@@ -202,9 +201,9 @@ string bwChain()
             else if(userchoice == "No" || userchoice == "no")
                 return Psy;
         }
-        else if(userchoice == " Yes" || userchoice == "yes")
+        else if(userchoice == "No" || userchoice == "no")
         {
-            auto it = owo.find(60);
+            it = owo.find(60);
             cout << it->second << endl;
             cin >> userchoice;
             if(userchoice == "Yes" || userchoice == "yes")
@@ -250,40 +249,625 @@ string bwChain()
 //            cin >> userchoice;
 //        }
 //    }
+return "Something has gone wrong in BackwardChaining how did you do this";
 }
 
-string fwChain(string Profession)
+string fwChain(const string& Profession)
 {
-    int rn;
+    unsigned int rn;
     string userchoice;
-    string CE = "Civil Engineering";
-    string ME = "Mechanical Engineering";
-    vector<string> Enginerring = {"Do you like circuits?", "do you like machines?", "do you like buidlings?"};
-    vector<string> Business = {"Do you like circuits?", "do you like machines?", "do you like buidlings?"};
+
+//    vector <string> SpecificArea= {"Civil Engineering", "Mechanical Engineering", "Chemical Engineer", "Electrical Engineer",
+//                            "Industrial Engineer"};
+
+    vector <string> SpecificArea = {"Civil Engineering", "Mechanical Engineering", "Chemical Engineer", "Electrical Engineer",
+                            "Industrial Engineer",
+                            "Computer Scientist", "Physicist", "Chemist", "Biologist","Astronomer",
+                            "Financial Adviser", "Marketer", "Accountant", "Stock Broker","Adviser",
+                            "Nursing", "Dentistry", "Physical Therapy", "Surgeon","Pharmacist",
+                            "Author", "Journalist","Editor","Poet", "Historian",
+                            "High School Teacher", "Professor", "Elementary School Teacher","Special Education Teacher",
+                            "Tutor", "Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer",
+                            "Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture","Counselor",
+                            "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist",
+                            "Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    vector <string> SAS= {"Computer Scientist", "Physicist", "Chemist", "Biologist",
+//                            "Astronomer"};
+//
+//    vector <string> SAB= {"Financial Adviser", "Marketer", "Accountant", "Stock Broker",
+//                            "Adviser"};
+//
+//    vector <string> SAM= {"Nursing", "Dentistry", "Physical Therapy", "Surgeon",
+//                            "Pharmacist"};
+//
+//    vector <string> SAE= {"Author", "Journalist","Editor","Poet", "Historian"};
+//    vector <string> SAED= {"High School Teacher", "Professor", "Elementary School Teacher","Special Education Teacher","Tutor"};
+//    vector <string> SAHC= {"Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer"};
+//
+//    vector <string> SAA= {"Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture"};
+//    vector <string> SAP= {"Counselor", "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist"};
+//    vector <string> SAG= {"Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
+
+    map<int, string> MAP;
+    for(unsigned int x = 1; x <= SpecificArea.size(); x++)
+    {
+        MAP.insert(pair<int, string>(x, SpecificArea[x-1]));
+    }
+
+
+    vector<string> vector = {     "Do you like construction?",
+                                  "Do you like physics and math?",
+                                  "Do you like using chemicals?",
+                                  "Do you like using technology?",
+                                  "Do you like machines?",
+                                  "Are you interested in computers?",
+                                  "Do you like physics?",
+                                  "Do you like chemistry?",
+                                  "Do you like biology?",
+                                  "Do you like space?", //100
+                                  "Do you like giving advice about money?",
+                                  "Do you like making products likable?",
+                                  "Do you like dealing with others money?",
+                                  "Do you like investing money?",
+                                  "Do you like showing off products?",
+                                  "Do you like helping people?",
+                                  "Do you like teeth?",
+                                  "Are you interested in how muscles work?",
+                                  "Do you like cutting people open?",
+                                  "Do you like making chemicals to make drugs?", //200
+                                  "Do you like writing books?",
+                                  "Do you like articles?",
+                                  "Do you like editing writing?",
+                                  "Do you like writing poems?",
+                                  "Do you like the history of english?",
+                                  "Do you like teaching teenagers?",
+                                  "Do you like teaching college students?",
+                                  "Do you like young kids?",
+                                  "Do you like teaching kids who need more help?",
+                                  "Do you like helping people with homework?",//300
+                                  "Do you like the benefits of food?",
+                                  "Do you like helping people with weight loss?",
+                                  "Do you like helping animals?",
+                                  "Do you like helping people with music?",
+                                  "Do you like helping people become fit?",
+                                  "Do you like crops?",
+                                  "Do you like taking care of your own land?",
+                                  "Do you like analyzing food?",
+                                  "Do you like dealing with cows?",
+                                  "Are you interested in lakes and oceans?", //400
+                                  "Do you like talking with troubled people?",
+                                  "Do you like working with crime scenes?",
+                                  "Do you like helping people with mental health?",
+                                  "Do you like dealing with troubled students?",
+                                  "Do you like dealing with mental disorders?",
+                                  "Do you like making maps?",
+                                  "Do you like studying climate?",
+                                  "Do you like training people about nature?",
+                                  "Do you like studying about population?",
+                                  "Do you like taking care of national parks?"};//500
+
     map<int, string> var;
-    for(int x = 1;x <= Enginerring.size(); x++)
+    for(unsigned int x = 1; x <= vector.size(); x++)
     {
         rn = x * 10;
-        var.insert(pair<int, string>(rn, Enginerring[x-1]));
+        var.insert(pair<int, string>(rn, vector[x-1]));
     }
+//    display(var);
     if(Profession == "Engineering")
     {
+
         auto it = var.find(10);
         cout << it->second << endl;
         cin >> userchoice;
         if(userchoice == "Yes" || userchoice == "yes")
         {
-            return CE;
+            return SpecificArea[0];
         }
         if(userchoice == "No" || userchoice == "no")
         {
-            auto it = var.find(20);
+            it = var.find(20);
             cout << it->second << endl;
             cin >> userchoice;
             if(userchoice == "Yes" || userchoice == "yes")
-                return ME;
+                return SpecificArea[1];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(30);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[2];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(40);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[3];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(50);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[4];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
         }
-
     }
-
+    else if(Profession == "Science")
+    {
+        auto it = var.find(60);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[5];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(70);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[6];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(80);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[7];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(90);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[8];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(100);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[9];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "Business")
+    {
+        auto it = var.find(110);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[10];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(120);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[11];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(130);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[12];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(140);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[13];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(150);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[14];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "Medical")
+    {
+        auto it = var.find(160);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[15];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(170);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[16];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(180);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[17];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(190);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[18];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(200);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[19];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "English")
+    {
+        auto it = var.find(210);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[20];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(220);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[21];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(230);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[22];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(240);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[23];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(250);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[24];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "Education")
+    {
+        auto it = var.find(260);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[25];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(270);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[26];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(280);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[27];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(290);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[28];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(300);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[29];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "Health Care")
+    {
+        auto it = var.find(310);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[30];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(320);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[31];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(330);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[32];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(340);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[33];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(350);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[34];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }else if(Profession == "Agriculture")
+    {
+        auto it = var.find(360);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[35];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(370);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[36];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(380);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[37];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(390);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[38];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(400);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[39];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "Psychology")
+    {
+        auto it = var.find(410);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[40];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(420);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[41];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(430);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[42];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(440);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[43];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(450);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[44];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(Profession == "Geography")
+    {
+        auto it = var.find(460);
+        cout << it->second << endl;
+        cin >> userchoice;
+        if(userchoice == "Yes" || userchoice == "yes")
+        {
+            return SpecificArea[45];
+        }
+        if(userchoice == "No" || userchoice == "no")
+        {
+            it = var.find(470);
+            cout << it->second << endl;
+            cin >> userchoice;
+            if(userchoice == "Yes" || userchoice == "yes")
+                return SpecificArea[46];
+            else if (userchoice == "No" || userchoice == "no")
+            {
+                it = var.find(480);
+                cout << it->second << endl;
+                cin >> userchoice;
+                if(userchoice == "Yes" || userchoice == "yes")
+                    return SpecificArea[47];
+                else if(userchoice == "No" || userchoice == "no")
+                {
+                    it = var.find(490);
+                    cout << it->second << endl;
+                    cin >> userchoice;
+                    if(userchoice == "Yes" || userchoice == "yes")
+                        return SpecificArea[48];
+                    else if (userchoice == "No" || userchoice == "no")
+                    {
+                        it = var.find(500);
+                        cout << it->second << endl;
+                        cin >> userchoice;
+                        if(userchoice == "Yes" || userchoice == "yes")
+                            return SpecificArea[49];
+                        else if(userchoice == "No" || userchoice == "no")
+                        {
+                            return "Done";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return "Something has gone horribly wrong WHAT DID YOU DO";
+}
+int askAgain()
+{
+    bool y = false;
+    int choice = 0;
+    string Profession;
+    string SpecificArea;
+    string user;
+    while(!y)
+    {
+        cout << "Please pick an option based on number." << endl;
+        cout << "1. Start Expert System" << endl;
+        cout << "2. End Program" << endl;
+        cin >> choice;
+        switch(choice) {
+            case 1:
+                Profession = bwChain();
+                cout << "A good profession for you is: " << Profession << endl;
+                SpecificArea = fwChain(Profession);
+                cout << "A good area for you is: " << SpecificArea;
+                cout << "\n\nWould you like to go again?(yes/no)" << endl;
+                cin >> user;
+                if(user == "yes")
+                    askAgain();
+                else if(user == "no")
+                    return 3;
+                else
+                    return 4;
+            case 2:
+                y = true;
+            default: ;
+        }
+    }
+    return 5;
 }

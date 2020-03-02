@@ -1,3 +1,6 @@
+/**
+ * @authors: Dalton Melville, Sam Swanson, Charlie Orch
+ */
 #include <iostream>
 #include <map>
 #include <string>

@@ -42,7 +42,7 @@ int main()
 {
 
 
-    vector<string> Majors = {"Engineering", "Science", "Medical", "English",
+    vector<string> Professions = {"Engineering", "Science", "Medical", "English",
                              "Geography", "Psychology", "Agriculture", "Health Care", "Education","Business"};
 
     bool y = false;
@@ -58,7 +58,7 @@ int main()
         switch(choice) {
             case 1:
                 Profession = bwChain();
-                if(find(Majors.begin(), Majors.end(), Profession) != Majors.end()) {
+                if(find(Professions.begin(), Professions.end(), Profession) != Professions.end()) {
                     cout << "A good profession for you is: " << Profession << endl;
                     SpecificArea = fwChain(Profession);
                     cout << "A good area for you is: " << SpecificArea;
@@ -234,14 +234,14 @@ string bwChain()
  * @param Major: Major is the parameter from which the user got from bwChain()
  * @return: Returns with the specific area (Profession) in which the user should look into going for.
  */
-string fwChain(const string& Major)
+string fwChain(const string& Profession)
 {
     unsigned int rn;
     string userchoice;
 
 
 /**
- * This comments were our initial thought as to how to split up each Area but ultimately decided to have them all in
+ * These comments were our initial thought as to how to split up each Area but ultimately decided to have them all in
  * on vector.
  */
 //    vector <string> SpecificArea= {"Civil Engineering", "Mechanical Engineering", "Chemical Engineer", "Electrical Engineer",
@@ -281,55 +281,55 @@ string fwChain(const string& Major)
 
 
     vector<string> RuleQuestion = {"Do you like construction?",
-                                  "Do you like physics and math?",
-                                  "Do you like using chemicals?",
-                                  "Do you like using technology?",
-                                  "Do you like machines?",
-                                  "Are you interested in computers?",
-                                  "Do you like physics?",
-                                  "Do you like chemistry?",
-                                  "Do you like biology?",
-                                  "Do you like space?", //100
-                                  "Do you like giving advice about money?",
-                                  "Do you like making products likable?",
-                                  "Do you like dealing with others money?",
-                                  "Do you like investing money?",
-                                  "Do you like showing off products?",
-                                  "Do you like helping people?",
-                                  "Do you like teeth?",
-                                  "Are you interested in how muscles work?",
-                                  "Do you like cutting people open?",
-                                  "Do you like making chemicals to make drugs?", //200
-                                  "Do you like writing books?",
-                                  "Do you like articles?",
-                                  "Do you like editing writing?",
-                                  "Do you like writing poems?",
-                                  "Do you like the history of english?",
-                                  "Do you like teaching teenagers?",
-                                  "Do you like teaching college students?",
-                                  "Do you like young kids?",
-                                  "Do you like teaching kids who need more help?",
-                                  "Do you like helping people with homework?",//300
-                                  "Do you like the benefits of food?",
-                                  "Do you like helping people with weight loss?",
-                                  "Do you like helping animals?",
-                                  "Do you like helping people with music?",
-                                  "Do you like helping people become fit?",
-                                  "Do you like crops?",
-                                  "Do you like taking care of your own land?",
-                                  "Do you like analyzing food?",
-                                  "Do you like dealing with cows?",
-                                  "Are you interested in lakes and oceans?", //400
-                                  "Do you like talking with troubled people?",
-                                  "Do you like working with crime scenes?",
-                                  "Do you like helping people with mental health?",
-                                  "Do you like dealing with troubled students?",
-                                  "Do you like dealing with mental disorders?",
-                                  "Do you like making maps?",
-                                  "Do you like studying climate?",
-                                  "Do you like training people about nature?",
-                                  "Do you like studying about population?",
-                                  "Do you like taking care of national parks?"};//500
+                                   "Do you like physics and math?",
+                                   "Do you like using chemicals?",
+                                   "Do you like using technology?",
+                                   "Do you like machines?",
+                                   "Are you interested in computers?",
+                                   "Do you like physics?",
+                                   "Do you like chemistry?",
+                                   "Do you like biology?",
+                                   "Do you like space?", //100
+                                   "Do you like giving advice about money?",
+                                   "Do you like making products likable?",
+                                   "Do you like dealing with others money?",
+                                   "Do you like investing money?",
+                                   "Do you like showing off products?",
+                                   "Do you like helping people?",
+                                   "Do you like teeth?",
+                                   "Are you interested in how muscles work?",
+                                   "Do you like cutting people open?",
+                                   "Do you like making chemicals to make drugs?", //200
+                                   "Do you like writing books?",
+                                   "Do you like articles?",
+                                   "Do you like editing writing?",
+                                   "Do you like writing poems?",
+                                   "Do you like the history of english?",
+                                   "Do you like teaching teenagers?",
+                                   "Do you like teaching college students?",
+                                   "Do you like young kids?",
+                                   "Do you like teaching kids who need more help?",
+                                   "Do you like helping people with homework?",//300
+                                   "Do you like the benefits of food?",
+                                   "Do you like helping people with weight loss?",
+                                   "Do you like helping animals?",
+                                   "Do you like helping people with music?",
+                                   "Do you like helping people become fit?",
+                                   "Do you like crops?",
+                                   "Do you like taking care of your own land?",
+                                   "Do you like analyzing food?",
+                                   "Do you like dealing with cows?",
+                                   "Are you interested in lakes and oceans?", //400
+                                   "Do you like talking with troubled people?",
+                                   "Do you like working with crime scenes?",
+                                   "Do you like helping people with mental health?",
+                                   "Do you like dealing with troubled students?",
+                                   "Do you like dealing with mental disorders?",
+                                   "Do you like making maps?",
+                                   "Do you like studying climate?",
+                                   "Do you like training people about nature?",
+                                   "Do you like studying about population?",
+                                   "Do you like taking care of national parks?"};//500
 
     map<int, string> var;
     for(unsigned int x = 1; x <= RuleQuestion.size(); x++)
@@ -338,7 +338,7 @@ string fwChain(const string& Major)
         var.insert(pair<int, string>(rn, RuleQuestion[x-1]));
     }
 //    display(var);
-    if(Major == "Engineering")
+    if(Profession == "Engineering")
     {
 
         auto it = var.find(10);
@@ -385,7 +385,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Science")
+    else if(Profession == "Science")
     {
         auto it = var.find(60);
         cout << it->second << endl;
@@ -431,7 +431,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Business")
+    else if(Profession == "Business")
     {
         auto it = var.find(110);
         cout << it->second << endl;
@@ -477,7 +477,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Medical")
+    else if(Profession == "Medical")
     {
         auto it = var.find(160);
         cout << it->second << endl;
@@ -523,7 +523,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "English")
+    else if(Profession == "English")
     {
         auto it = var.find(210);
         cout << it->second << endl;
@@ -569,7 +569,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Education")
+    else if(Profession == "Education")
     {
         auto it = var.find(260);
         cout << it->second << endl;
@@ -615,7 +615,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Health Care")
+    else if(Profession == "Health Care")
     {
         auto it = var.find(310);
         cout << it->second << endl;
@@ -660,7 +660,7 @@ string fwChain(const string& Major)
                 }
             }
         }
-    }else if(Major == "Agriculture")
+    }else if(Profession == "Agriculture")
     {
         auto it = var.find(360);
         cout << it->second << endl;
@@ -706,7 +706,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Psychology")
+    else if(Profession == "Psychology")
     {
         auto it = var.find(410);
         cout << it->second << endl;
@@ -752,7 +752,7 @@ string fwChain(const string& Major)
             }
         }
     }
-    else if(Major == "Geography")
+    else if(Profession == "Geography")
     {
         auto it = var.find(460);
         cout << it->second << endl;

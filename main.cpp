@@ -43,7 +43,7 @@ int main()
 
 
     vector<string> Professions = {"Engineering", "Science", "Medical", "English",
-                             "Geography", "Psychology", "Agriculture", "Health Care", "Education","Business"};
+                                  "Geography", "Psychology", "Agriculture", "Health Care", "Education","Business"};
 
     bool y = false;
     int choice = 0;
@@ -76,7 +76,7 @@ int main()
 
 /**
  *
- * @return: Expert system will return the Major it thinks is best for the student based on their answers.
+ * @return: Expert system will return the Profession it thinks is best for the student based on their answers.
  */
 string bwChain()
 {
@@ -93,17 +93,11 @@ string bwChain()
     string HC = "Health Care";
     string EDU = "Education";
     string BUS = "Business";
+    string undefined = "Undefined";
     vector<string> MajorsQuesiton = {"Do you like Math?", "Do you like Chem?", "Do you like Nature?",
                                      "Are you interesting in farming?",
                                      "Are you interested in helping people?", "Are you interested in Finances?",
                                      "Are you interested in Writing?", "Are you interested in teaching?"};
-
-//    for(int z = 1; z <= Professions.size(); z++)
-//    {
-//        Rn = z *10;
-//        cout << Rn << endl;
-//    }
-
     map<int, string> Rules;
     for(unsigned int x = 1;x <= MajorsQuesiton.size(); x++)
     {
@@ -214,19 +208,7 @@ string bwChain()
 //        }
 //    }
 //    auto it = Rules.find(userinput);
-
-//    if(it != Rules.end())
-//    {
-//        cout << "You have chosen " << it->second << " as your Profession yes?" << endl;
-//        string userchoice;
-//        cin >> userchoice;
-//        if(userchoice == "yes")
-//        {
-//            cout << "Do you like this shit? (yes/no): " << endl;
-//            cin >> userchoice;
-//        }
-//    }
-    return "Invalid Input please re run the program.";
+    return undefined;
 }
 /**
  * Forward chaining will ask the user what they like in order to find a specific area in which they should go to.
@@ -270,15 +252,8 @@ string fwChain(const string& Profession)
                                     "Tutor", "Nutritionist", "Dietician","Veterinary","Music Therapy","Athletic Trainer",
                                     "Crop Farmer", "Rancher", "Food Scientist", "Dairy Farmer", "Aquaculture","Counselor",
                                     "Forensic Psychologist", "Health Psychologist", "School Psychologist", "Psychiatrist",
-                                    "Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger"};
-
-
-    map<int, string> MAP;
-    for(unsigned int x = 1; x <= SpecificArea.size(); x++)
-    {
-        MAP.insert(pair<int, string>(x, SpecificArea[x-1]));
-    }
-
+                                    "Cartographer", "Climatologist" , "Environmental Manager", "Demographer", "Park Ranger",
+                                    "Undefined"};
 
     vector<string> RuleQuestion = {"Do you like construction?",
                                    "Do you like physics and math?",
@@ -331,6 +306,11 @@ string fwChain(const string& Profession)
                                    "Do you like studying about population?",
                                    "Do you like taking care of national parks?"};//500
 
+//    map<int, string> MAP;
+//    for(unsigned int x = 1; x <= SpecificArea.size(); x++)
+//    {
+//        MAP.insert(pair<int, string>(x, SpecificArea[x-1]));
+//    }
     map<int, string> var;
     for(unsigned int x = 1; x <= RuleQuestion.size(); x++)
     {
@@ -378,7 +358,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[4];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -424,7 +404,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[9];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -470,7 +450,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[14];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -516,7 +496,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[19];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -562,7 +542,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[24];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -608,7 +588,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[29];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -654,7 +634,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[34];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -699,7 +679,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[39];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -745,7 +725,7 @@ string fwChain(const string& Profession)
                             return SpecificArea[44];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
@@ -791,14 +771,14 @@ string fwChain(const string& Profession)
                             return SpecificArea[49];
                         else if(userchoice == "No" || userchoice == "no")
                         {
-                            return "Done";
+                            return SpecificArea[50];
                         }
                     }
                 }
             }
         }
     }
-    return "Invalid input please re run the program.";
+    return SpecificArea[50];
 }
 /**
  *  Function is meant to ask the user whether they want to run through the program again

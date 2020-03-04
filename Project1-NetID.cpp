@@ -213,7 +213,7 @@ string Profession_BW()
 /**
  * Forward chaining will ask the user what they like in order to find a specific area in which they should go to.
  *
- * @param Major: Major is the parameter from which the user got from Profession_BW()
+ * @param Major: Major is the parameter from which the user got from bwChain()
  * @return: Returns with the specific area (Profession) in which the user should look into going for.
  */
 string Area_FW(const string& Profession)

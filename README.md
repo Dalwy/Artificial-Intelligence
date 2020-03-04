@@ -1,4 +1,5 @@
 Names: Dalton Melville, Sam Swanson, Charlie Orch
+
 NetIDs: Drm143, cso16, sds196
 
 How to compile: g++ -o "What ever name you want here" Project1_NetID.cpp -std=c++11

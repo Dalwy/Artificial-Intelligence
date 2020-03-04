@@ -34,8 +34,8 @@ using namespace std;
 
 
 
-string bwChain();
-string fwChain(const string&);
+string Profession_BW();
+string Area_FW(const string&);
 void display(const map<int, string>&);
 int askAgain();
 int main()
@@ -57,11 +57,11 @@ int main()
         cin >> choice;
         switch(choice) {
             case 1:
-                Profession = bwChain();
+                Profession = Profession_BW();
                 if(find(Professions.begin(), Professions.end(), Profession) != Professions.end()) {
-                    cout << "A good profession for you is: " << Profession << endl;
-                    SpecificArea = fwChain(Profession);
-                    cout << "A good area for you is: " << SpecificArea;
+                    cout << "A good profession for you is: " << Profession << "\n" << endl;
+                    SpecificArea = Area_FW(Profession);
+                    cout << "A good area in that field for you is: " << SpecificArea;
                     askAgain();
                 }
                 else
@@ -78,7 +78,7 @@ int main()
  *
  * @return: Expert system will return the Profession it thinks is best for the student based on their answers.
  */
-string bwChain()
+string Profession_BW()
 {
     string userchoice;
     unsigned int Rn = 0;
@@ -216,7 +216,7 @@ string bwChain()
  * @param Major: Major is the parameter from which the user got from bwChain()
  * @return: Returns with the specific area (Profession) in which the user should look into going for.
  */
-string fwChain(const string& Profession)
+string Area_FW(const string& Profession)
 {
     unsigned int rn;
     string userchoice;
